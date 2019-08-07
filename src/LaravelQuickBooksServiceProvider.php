@@ -3,6 +3,7 @@
 namespace LifeOnScreen\LaravelQuickBooks;
 
 use Illuminate\Support\ServiceProvider;
+use QuickBooksOnline\API\DataService\DataService;
 
 class LaravelQuickBooksServiceProvider extends ServiceProvider
 {
@@ -36,6 +37,10 @@ class LaravelQuickBooksServiceProvider extends ServiceProvider
         // Register the service the package provides.
         $this->app->singleton('QuickBooksConnection', function ($app) {
             return new QuickBooksConnection;
+        });
+
+        $this->app->singleton(DataService::class, function ($app) {
+            return $app->make('QuickBooksConnection')->getDataService();
         });
 
         // Register the service the package provides.
