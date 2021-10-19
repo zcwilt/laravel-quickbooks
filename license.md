@@ -1,7 +1,7 @@
 # The license
 
-Copyright 2018 LifeOnScreen Global Limited and other contributors, 
-https://lifeonscreen.com
+Copyright 2018 LifeOnScreen Global Limited (https://lifeonscreen.com),
+Jarvus Innovations (https://jarv.us) and other contributors.
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

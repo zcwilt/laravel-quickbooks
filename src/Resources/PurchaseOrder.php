@@ -1,8 +1,8 @@
 <?php
 
-namespace LifeOnScreen\LaravelQuickBooks\Resources;
+namespace Jarvus\LaravelQuickBooks\Resources;
 
-use LifeOnScreen\LaravelQuickBooks\QuickBooksResource;
+use Jarvus\LaravelQuickBooks\QuickBooksResource;
 use QuickBooksOnline\API\Facades as QuickBooksFacades;
 
 class PurchaseOrder extends QuickBooksResource

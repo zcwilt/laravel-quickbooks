@@ -10,7 +10,7 @@ Take a look at [contributing.md](contributing.md) to see a to do list.
 Via Composer
 
 ``` bash
-$ composer require lifeonscreen/laravel-quickbooks
+$ composer require jarvus/laravel-quickbooks
 ```
 
 Publish package and run migrations
@@ -52,7 +52,7 @@ For example, if you use the [Laravel Options](https://github.com/appstract/larav
 ```php
 namespace App\QuickBooks;
 
-use LifeOnScreen\LaravelQuickBooks\QuickBooksTokenHandler;
+use Jarvus\LaravelQuickBooks\QuickBooksTokenHandler;
 
 class TokenHandler extends QuickBooksTokenHandler
 {
@@ -72,9 +72,9 @@ Then bind it in your `AppServiceProvider.php`:
 
 ```php
 public function boot()
-{        
+{
     $this->app->bind(
-        \LifeOnScreen\LaravelQuickBooks\QuickBooksTokenHandlerInterface::class, 
+        \Jarvus\LaravelQuickBooks\QuickBooksTokenHandlerInterface::class,
         \App\QuickBooks\TokenHandler::class
     );
 }
@@ -84,7 +84,7 @@ public function boot()
 
 To connect your application with your QuickBooks company you can use `QuickBooksAuthenticator` helper.
 It has two methods:
-* `getAuthorizationUrl()` - Returns redirect URL and puts `quickbooks_auth` cookie into Laravel cookie queue. 
+* `getAuthorizationUrl()` - Returns redirect URL and puts `quickbooks_auth` cookie into Laravel cookie queue.
 Cookie is valid for 30 minutes.
 * `processHook()` - Validates `quickbooks_auth` cookie and sets realm id, access token and refresh token.
 
@@ -93,7 +93,7 @@ Usage example:
 ```php
 namespace App\Http\Controllers;
 
-use LifeOnScreen\LaravelQuickBooks\QuickBooksAuthenticator;
+use Jarvus\LaravelQuickBooks\QuickBooksAuthenticator;
 use Cookie;
 
 class QuickBooksController extends Controller
@@ -117,11 +117,11 @@ class QuickBooksController extends Controller
 
 ### Sync Eloquent model to QuickBooks
 
-You can either extend the `LifeOnScreen\LaravelQuickBooks\QuickBooksEntity` class which is already 
-extending the Eloquent model or you can use the `LifeOnScreen\LaravelQuickBooks\SyncsToQuickBooks` trait.
+You can either extend the `Jarvus\LaravelQuickBooks\QuickBooksEntity` class which is already
+extending the Eloquent model or you can use the `Jarvus\LaravelQuickBooks\SyncsToQuickBooks` trait.
 
 Then you have to define:
- * `quickBooksResource` - One of the QuickBooks resources classes (e.g.. `\LifeOnScreen\LaravelQuickBooks\Resources\Company::class`).
+ * `quickBooksResource` - One of the QuickBooks resources classes (e.g.. `\Jarvus\LaravelQuickBooks\Resources\Company::class`).
  * `getQuickBooksArray()` - This method must return the associative array which will be synced to QuickBooks.
  * `quickBooksIdColumn` (optional) - The column to use for storing the QuickBooks ID (defaults to `quickbooks_id`)
 
@@ -130,8 +130,8 @@ Usage example:
 ```php
 namespace App\Models\Company;
 
-use LifeOnScreen\LaravelQuickBooks\QuickBooksEntity;
-use LifeOnScreen\LaravelQuickBooks\Resources\Customer;
+use Jarvus\LaravelQuickBooks\QuickBooksEntity;
+use Jarvus\LaravelQuickBooks\Resources\Customer;
 
 class Company extends QuickBooksEntity
 {
@@ -141,13 +141,13 @@ class Company extends QuickBooksEntity
      * @var string
      */
     protected $quickBooksIdColumn = 'quickbooks_id';
-        
+
     /**
-     * Use one of LifeOnScreen\LaravelQuickBooks\Resources classes
+     * Use one of Jarvus\LaravelQuickBooks\Resources classes
      * @var array
      */
     protected $quickBooksResource = Customer::class;
-    
+
     /**
      * @return array
      */
@@ -183,11 +183,11 @@ public function syncExample()
 
 ### Using the QuickBooks Resource Classes
 
-You can use the included resource classes in `LifeOnScreen\LaravelQuickBooks\Resources` to create, update, and query resources from QuickBooks. 
+You can use the included resource classes in `Jarvus\LaravelQuickBooks\Resources` to create, update, and query resources from QuickBooks.
 
 Examples:
 ```
-$customer = new LifeOnScreen\LaravelQuickBooks\Resources\Customer;
+$customer = new Jarvus\LaravelQuickBooks\Resources\Customer;
 
 // create
 $customer->create([
@@ -211,7 +211,7 @@ $customer->findBy('FamilyName', 'Smith');
 $customer->query();
 ```
 
-See `QuickBooksResource.php` for further documentation. 
+See `QuickBooksResource.php` for further documentation.
 
 ## Changelog
 
@@ -228,14 +228,16 @@ If you discover any security related issues, please email author instead of usin
 ## Credits
 
 - [Jani Cerar](https://github.com/janicerar), [Aaron Harp](https://github.com/arharp)
+- [Chris Alfano](https://github.com/themightychris)
+- [Nafis Bey](https://github.com/nbey)
 
 ## License
 
 MIT license. Please see the [license file](license.md) for more information.
 
-[ico-version]: https://img.shields.io/packagist/v/lifeonscreen/laravel-quickbooks.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/lifeonscreen/laravel-quickbooks.svg?style=flat-square
+[ico-version]: https://img.shields.io/packagist/v/jarvus/laravel-quickbooks.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/jarvus/laravel-quickbooks.svg?style=flat-square
 
-[link-packagist]: https://packagist.org/packages/lifeonscreen/laravel-quickbooks
-[link-downloads]: https://packagist.org/packages/lifeonscreen/laravel-quickbooks
-[link-author]: https://github.com/LifeOnScreen
+[link-packagist]: https://packagist.org/packages/jarvus/laravel-quickbooks
+[link-downloads]: https://packagist.org/packages/jarvus/laravel-quickbooks
+[link-author]: https://github.com/JarvusInnovations
