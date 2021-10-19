@@ -1,5 +1,5 @@
 {
-    "name": "lifeonscreen/laravel-quickbooks",
+    "name": "jarvus/laravel-quickbooks",
     "description": "Laravel Quickbooks integration",
     "license": "MIT",
     "authors": [
@@ -7,9 +7,19 @@
             "name": "Jani Cerar",
             "email": "jani.cerar@lifeonscreen.com",
             "homepage": "https://lifeonscreen.com"
+        },
+        {
+            "name": "Chris Alfano",
+            "email": "chris@jarv.us",
+            "homepage": "https://jarv.us"
+        },
+        {
+            "name": "Nafis Bey",
+            "email": "nafis@jarv.us",
+            "homepage": "https://jarv.us"
         }
     ],
-    "homepage": "https://github.com/LifeOnScreen/laravel-quickbooks",
+    "homepage": "https://github.com/JarvusInnovations/laravel-quickbooks",
     "keywords": ["Laravel", "laravel-quickbooks"],
     "require": {
         "illuminate/support": "^6.2|~5",
