@@ -1,6 +1,6 @@
 <?php
 
-namespace LifeOnScreen\LaravelQuickBooks;
+namespace Jarvus\LaravelQuickBooks;
 
 use Illuminate\Support\ServiceProvider;
 use QuickBooksOnline\API\DataService\DataService;

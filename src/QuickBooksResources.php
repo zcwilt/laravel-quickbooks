@@ -1,12 +1,12 @@
 <?php
 
-namespace LifeOnScreen\LaravelQuickBooks;
+namespace Jarvus\LaravelQuickBooks;
 
 use QuickBooksOnline\API\Facades as QuickBooksFacades;
 
 /**
  * Class QuickBooksResources
- * @package LifeOnScreen\LaravelQuickBooks
+ * @package Jarvus\LaravelQuickBooks
  */
 class QuickBooksResources
 {

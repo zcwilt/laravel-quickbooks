@@ -31,21 +31,21 @@
     },
     "autoload": {
         "psr-4": {
-            "LifeOnScreen\\LaravelQuickBooks\\": "src/"
+            "Jarvus\\LaravelQuickBooks\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "LifeOnScreen\\LaravelQuickBooks\\Tests\\": "tests"
+            "Jarvus\\LaravelQuickBooks\\Tests\\": "tests"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "LifeOnScreen\\LaravelQuickBooks\\LaravelQuickBooksServiceProvider"
+                "Jarvus\\LaravelQuickBooks\\LaravelQuickBooksServiceProvider"
             ],
             "aliases": {
-                "laravel-quickbooks": "LifeOnScreen\\LaravelQuickBooks\\Facades\\LaravelQuickBooks"
+                "laravel-quickbooks": "Jarvus\\LaravelQuickBooks\\Facades\\LaravelQuickBooks"
             }
         }
     }
