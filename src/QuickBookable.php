@@ -1,6 +1,6 @@
 <?php
 
-namespace LifeOnScreen\LaravelQuickBooks;
+namespace Jarvus\LaravelQuickBooks;
 
 interface QuickBookable
 {
