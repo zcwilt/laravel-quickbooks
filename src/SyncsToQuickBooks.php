@@ -15,7 +15,7 @@ trait SyncsToQuickBooks
      * @see https://developer.intuit.com/docs/api/accounting
      * @return array
      */
-    abstract protected function getQuickBooksArray(): array;
+    abstract public function getQuickBooksArray(): array;
 
     /**
      * Allows you to use `$model->quickbooks_id` regardless of the actual column being used.
