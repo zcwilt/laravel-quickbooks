@@ -144,12 +144,16 @@ class QuickBooksResource
      * @return \Illuminate\Support\Collection
      * @throws \Exception
      */
-    public function query($where = null, $offset = null, $limit = null)
+    public function query($where = null, $offset = null, $limit = null, $orderby = null)
     {
         $query = 'SELECT * FROM ' . $this->getResourceName();
 
         if (is_array($where)) {
             $query .= $this->buildWhereString($where);
+        }
+
+        If ($orderby) {
+            $query .= " " . $orderby;
         }
 
         return collect($this->request('Query', $query, $offset, $limit));
