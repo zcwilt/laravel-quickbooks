@@ -153,7 +153,7 @@ class QuickBooksResource
         }
 
         If ($orderby) {
-            $query .= " " . $orderby;
+            $query .= " ORDERBY " . $orderby;
         }
 
         return collect($this->request('Query', $query, $offset, $limit));
