@@ -63,6 +63,7 @@ class QuickBooksResource
         $object = $this->getResourceFacade()::create($attributes);
 
         if (!$response = $this->request('Add', $object)) {
+
             return false;
         }
 
@@ -144,7 +145,7 @@ class QuickBooksResource
      * @return \Illuminate\Support\Collection
      * @throws \Exception
      */
-    public function query($where = null, $offset = null, $limit = null, $orderby = null)
+    public function query($where = null, $offset = null, $limit = null, $orderby = null, $rawWhere)
     {
         $query = 'SELECT * FROM ' . $this->getResourceName();
 
@@ -152,10 +153,12 @@ class QuickBooksResource
             $query .= $this->buildWhereString($where);
         }
 
+        if ($rawWhere) {
+            $query .= ' WHERE ' . $rawWhere;
+        }
         If ($orderby) {
             $query .= " ORDERBY " . $orderby;
         }
-
         return collect($this->request('Query', $query, $offset, $limit));
     }
 
@@ -193,6 +196,7 @@ class QuickBooksResource
         $response = $this->connection->getDataService()->$method(...$params);
 
         if ($this->error = $this->connection->getDataService()->getLastError()) {
+            dd($this->error);
             return false;
         }
 
