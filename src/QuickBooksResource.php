@@ -145,7 +145,7 @@ class QuickBooksResource
      * @return \Illuminate\Support\Collection
      * @throws \Exception
      */
-    public function query($where = null, $offset = null, $limit = null, $orderby = null, $rawWhere)
+    public function query($where = null, $offset = null, $limit = null, $orderby = null)
     {
         $query = 'SELECT * FROM ' . $this->getResourceName();
 
@@ -153,8 +153,8 @@ class QuickBooksResource
             $query .= $this->buildWhereString($where);
         }
 
-        if ($rawWhere) {
-            $query .= ' WHERE ' . $rawWhere;
+        if (is_string($where)) {
+            $query .= ' WHERE ' . $where;
         }
         If ($orderby) {
             $query .= " ORDERBY " . $orderby;
