@@ -259,6 +259,10 @@ class QuickBooksResource
     protected function buildWhereString($attributes)
     {
 
+        if (empty($attributes)) {
+            return '';
+        }
+        
         if (is_string($attributes)) {
             $where = ' WHERE ' . $attributes;
             return $where;
