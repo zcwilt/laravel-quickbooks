@@ -149,13 +149,8 @@ class QuickBooksResource
     {
         $query = 'SELECT * FROM ' . $this->getResourceName();
 
-        if (is_array($where)) {
-            $query .= $this->buildWhereString($where);
-        }
+        $query .= $this->buildWhereString($where);
 
-        if (is_string($where)) {
-            $query .= ' WHERE ' . $where;
-        }
         If ($orderby) {
             $query .= " ORDERBY " . $orderby;
         }
@@ -263,6 +258,12 @@ class QuickBooksResource
      */
     protected function buildWhereString($attributes)
     {
+
+        if (is_string($attributes)) {
+            $where = ' WHERE ' . $attributes;
+            return $where;
+        }
+
         $where  = ' WHERE ';
 
         $where .= collect($attributes)->map(function ($value, $key) {
