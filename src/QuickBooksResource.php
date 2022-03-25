@@ -191,7 +191,6 @@ class QuickBooksResource
         $response = $this->connection->getDataService()->$method(...$params);
 
         if ($this->error = $this->connection->getDataService()->getLastError()) {
-            dd($this->error);
             return false;
         }
 
@@ -258,6 +257,10 @@ class QuickBooksResource
      */
     protected function buildWhereString($attributes)
     {
+
+        if (empty($attributes)) {
+            return '';
+        }
 
         if (is_string($attributes)) {
             $where = ' WHERE ' . $attributes;
